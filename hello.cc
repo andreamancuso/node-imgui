@@ -1,11 +1,12 @@
 #include <napi.h>
+#include <thread>
+#include <cstdio>
+#include <string>
+#include <vector>
 
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
-#include <cstdio>
-#include <string>
-#include <vector>
 
 #define GL_SILENCE_DEPRECATION
 #if defined(IMGUI_IMPL_OPENGL_ES2)
@@ -120,15 +121,16 @@ int run()
     return 0;
 }
 
+std::thread uiThread(run);
 
 static Napi::Value Test(const Napi::CallbackInfo& info) {
-  Napi::Env env = info.Env();
+    Napi::Env env = info.Env();
 
-  printf("Hello world\n");
+    printf("Starting UI thread\n");
 
-  run();
+//    uiThread.join();
 
-  return env.Null();
+    return env.Null();
 }
 
 static Napi::Object Init(Napi::Env env, Napi::Object exports) {
