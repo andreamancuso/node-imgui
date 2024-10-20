@@ -1,6 +1,11 @@
 .idea
 build
 
+imgui.ini
+
+glfw3.dll
+glfw3dll.lib
+
 # Logs
 logs
 *.log
