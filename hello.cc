@@ -3,6 +3,8 @@
 static Napi::Value Test(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
 
+  printf("Hello world\n");
+
   return env.Null();
 }
 
